@@ -1,33 +1,39 @@
-var express = require("express")
-var cors = require("cors")
-var bodyParser = require("body-parser")
-var app = express()
-var mongoose = require("mongoose")
-var port = process.env.PORT || 5000
+const Bundler = require('parcel-bundler'),
+    express = require('express'),
+    mongoose = require('mongoose');
 
-app.use(bodyParser.json())
-app.use(cors())
-app.use(
-    bodyParser.urlencoded({
-        extended: false
-    })
-)
+const bundler = new Bundler('./public/index.html', {});
 
-const mongoURI =  'mongodb://localhost:27017/ticket'
+const Routes = require('./app/routes/message.server.routes');
 
-mongoose
-    .connect(mongoURI, {useNewUrlParser: true})
-    .then(() => console.log("MongoDB connected"))
-    .catch(err => console.log(err))
+const app = express();
 
-var Users = require('./routes/Users')
-const assignment = require('./routes/Assignments')
-const exam = require('./routes/Exams')
+app.use(express.json());
 
-app.use('/users', Users)
-app.use('/', assignment)
-app.use('/', exam)
+mongoose.connect('mongodb://localhost:27017/react-sample',{ useNewUrlParser: true }).then(() => {
+    console.log('Connected to the DB');
+}).catch(err => {
+    console.error(err);
+    process.exit(-1);
+});
 
-app.listen(port, () => {
-    console.log("Server is running on port: " + port)
-})
+
+app.use('/', Routes);
+
+app.use(bundler.middleware());
+
+app.use(express.static('./dist'));
+
+app.get('/', function (req, res) {
+    res.sendFile('./dist/index.html');
+});
+
+app.listen(3000, err => {
+    if (err) {
+        console.error(err);
+        return;
+    }
+
+    console.log('Application is running on port 3000');
+});
+
