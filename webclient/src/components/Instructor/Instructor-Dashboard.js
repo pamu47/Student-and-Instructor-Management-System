@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {Link} from "react-router-dom"
 import './vendor/bootstrap/css/bootstrap.min.css'
 import './vendor/fontawesome-free/css/all.min.css'
 import './css/sb-admin.css'
@@ -24,66 +25,35 @@ export default class Dashboard extends Component {
                       <div class="card-body-icon">
                         <i class="fas fa-fw fa-list"></i>
                       </div>
-                      <div class="mr-5">Function 1</div>
+                      <div class="mr-5">Choose Courses</div>
                     </div>
-                    <a class="card-footer text-white clearfix small z-1" href="#">
-                      <span class="float-left">View Details</span>
+                    <Link class="card-footer text-white clearfix small z-1" to='/choose-course'>
+                      <span class="float-left">View Available courses</span>
                       <span class="float-right">
                         <i class="fas fa-angle-right"></i>
                       </span>
-                    </a>
+                    </Link>
                   </div>
                 </div>
                 <div class="col-xl-3 col-sm-6 mb-3">
                   <div class="card text-white bg-warning o-hidden h-100">
                     <div class="card-body">
                       <div class="card-body-icon">
-                        <i class="fas fa-fw fa-tv"></i>
+                        <i class="fas fa-fw fa-pencil-ruler"></i>
                       </div>
-                      <div class="mr-5">Function 2</div>
+                      <div class="mr-5">Assignments</div>
                     </div>
-                    <a class="card-footer text-white clearfix small z-1" href="#">
-                      <span class="float-left">View Details</span>
+                    <Link class="card-footer text-white clearfix small z-1" to='/grade-assignments'>
+                      <span class="float-left">View Assignments</span>
                       <span class="float-right">
                         <i class="fas fa-angle-right"></i>
                       </span>
-                    </a>
+                    </Link>
                   </div>
                 </div>
-                <div class="col-xl-3 col-sm-6 mb-3">
-                  <div class="card text-white bg-success o-hidden h-100">
-                    <div class="card-body">
-                      <div class="card-body-icon">
-                        <i class="fas fa-fw fa-shopping-cart"></i>
-                      </div>
-                      <div class="mr-5">Function 3</div>
-                    </div>
-                    <a class="card-footer text-white clearfix small z-1" href="#">
-                      <span class="float-left">View Details</span>
-                      <span class="float-right">
-                        <i class="fas fa-angle-right"></i>
-                      </span>
-                    </a>
-                  </div>
-                </div>
-                <div class="col-xl-3 col-sm-6 mb-3">
-                  <div class="card text-white bg-danger o-hidden h-100">
-                    <div class="card-body">
-                      <div class="card-body-icon">
-                        <i class="fas fa-fw fa-life-ring"></i>
-                      </div>
-                      <div class="mr-5">Function 5</div>
-                    </div>
-                    <a class="card-footer text-white clearfix small z-1" href="#">
-                      <span class="float-left">View Details</span>
-                      <span class="float-right">
-                        <i class="fas fa-angle-right"></i>
-                      </span>
-                    </a>
-                  </div>
-                </div>
+
               </div>
-              <footer class="sticky-footer">
+              <footer class="sticky-footer" style={{width:'100%'}}>
                 <div class="container my-auto">
                   <div class="copyright text-center my-auto">
                     <span>Copyright © Code Warriors 2018</span>
