@@ -3,8 +3,8 @@ const exsubmission = express.Router()
 const examsubSchema = require('../../models/Instructor/ExamSubmission')
 
 //Setting up twilio for sending a text when a reservation occurs
-const accountSid = 'AC2285c402a8db5262edec637217f0a313';
-const authToken = 'bc13f91ff8eec6d701d229cbb4ff1257';
+const accountSid = 'sid';
+const authToken = 'auth token';
 const client = require('twilio')(accountSid, authToken);
 
 
